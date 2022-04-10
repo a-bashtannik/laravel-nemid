@@ -1,3 +1,5 @@
+![Laravel NemID](https://user-images.githubusercontent.com/2712350/162633363-c0f0d76e-f528-4437-9f20-353d7e13fe68.png)
+
 # ⚠️ MitID is replacing NemID
 
 Throughout 2021 and 2022, MitID will replace NemID. All NemID users will be notified by their online or mobile bank when it is their turn to get MitID. Those who do not have online banking will be notified via Digital Post.
