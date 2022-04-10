@@ -1,0 +1,237 @@
+<definitions xmlns:tns="http://localhost/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             targetNamespace="http://localhost/">
+    <types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                    xmlns:tns="http://localhost/"
+                    xmlns:stns="http://localhost/"
+                    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                    xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                    xmlns="http://schemas.xmlsoap.org/wsdl/" attributeFormDefault="unqualified"
+                    elementFormDefault="qualified" targetNamespace="http://localhost/">
+            <xsd:import namespace="java:dk.certifikat.pid.webservices"></xsd:import>
+            <xsd:element name="pid">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element xmlns:tp="java:dk.certifikat.pid.webservices" name="pIDRequests"
+                                     type="tp:ArrayOfPIDRequest"></xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="pidResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element xmlns:tp="java:dk.certifikat.pid.webservices" name="result"
+                                     type="tp:ArrayOfPIDReply"></xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="getPidRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="cpr" type="xsd:string"></xsd:element>
+                        <xsd:element name="serviceProviderId" type="xsd:string"></xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="getPidResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="pidForCpr" type="xsd:string"></xsd:element>
+                        <xsd:element name="created" type="xsd:boolean"></xsd:element>
+                        <xsd:element name="statusCode" type="xsd:int"></xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="findPidRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="cpr" type="xsd:string"></xsd:element>
+                        <xsd:element name="serviceProviderId" type="xsd:string"></xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="findPidResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element maxOccurs="1" minOccurs="0" name="pidForCpr" type="xsd:string"></xsd:element>
+                        <xsd:element name="statusCode" type="xsd:int"></xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="test">
+                <xsd:complexType></xsd:complexType>
+            </xsd:element>
+            <xsd:element name="testConnection">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="intVal" type="xsd:int"></xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="testConnectionResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="result" type="xsd:int"></xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="testResponse">
+                <xsd:complexType></xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                    xmlns:tns="http://localhost/"
+                    xmlns:stns="java:dk.certifikat.pid.webservices"
+                    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                    xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                    xmlns="http://schemas.xmlsoap.org/wsdl/" attributeFormDefault="qualified"
+                    elementFormDefault="qualified" targetNamespace="java:dk.certifikat.pid.webservices">
+            <xsd:complexType name="ArrayOfPIDReply">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" name="PIDReply" nillable="true"
+                                 type="stns:PIDReply"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ArrayOfPIDRequest">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" name="PIDRequest" nillable="true"
+                                 type="stns:PIDRequest"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="PIDReply">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="CPR" nillable="true" type="xsd:string"></xsd:element>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="PID" nillable="true" type="xsd:string"></xsd:element>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="id" nillable="true" type="xsd:string"></xsd:element>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="redirURL" nillable="true"
+                                 type="xsd:string"></xsd:element>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="statusCode" nillable="true"
+                                 type="xsd:string"></xsd:element>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="statusTextDK" nillable="true"
+                                 type="xsd:string"></xsd:element>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="statusTextUK" nillable="true"
+                                 type="xsd:string"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="PIDRequest">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="CPR" nillable="true" type="xsd:string"></xsd:element>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="PID" nillable="true" type="xsd:string"></xsd:element>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="b64Cert" nillable="true"
+                                 type="xsd:string"></xsd:element>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="id" nillable="true" type="xsd:string"></xsd:element>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="serviceId" nillable="true"
+                                 type="xsd:string"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </types>
+    <message name="getPidRequest">
+        <part element="tns:getPidRequest" name="parameters"></part>
+    </message>
+    <message name="findPidResponse">
+        <part element="tns:findPidResponse" name="parameters"></part>
+    </message>
+    <message name="findPidRequest">
+        <part element="tns:findPidRequest" name="parameters"></part>
+    </message>
+    <message name="test">
+        <part element="tns:test" name="parameters"></part>
+    </message>
+    <message name="testConnection">
+        <part element="tns:testConnection" name="parameters"></part>
+    </message>
+    <message name="getPidResponse">
+        <part element="tns:getPidResponse" name="parameters"></part>
+    </message>
+    <message name="pid">
+        <part element="tns:pid" name="parameters"></part>
+    </message>
+    <message name="testResponse">
+        <part element="tns:testResponse" name="parameters"></part>
+    </message>
+    <message name="pidResponse">
+        <part element="tns:pidResponse" name="parameters"></part>
+    </message>
+    <message name="testConnectionResponse">
+        <part element="tns:testConnectionResponse" name="parameters"></part>
+    </message>
+    <portType name="pidwsdocPort">
+        <operation name="pid">
+            <input message="tns:pid"></input>
+            <output message="tns:pidResponse"></output>
+        </operation>
+        <operation name="getPidForCpr">
+            <input message="tns:getPidRequest"></input>
+            <output message="tns:getPidResponse"></output>
+        </operation>
+        <operation name="findFromCpr">
+            <input message="tns:findPidRequest"></input>
+            <output message="tns:findPidResponse"></output>
+        </operation>
+        <operation name="testConnection">
+            <input message="tns:testConnection"></input>
+            <output message="tns:testConnectionResponse"></output>
+        </operation>
+        <operation name="test">
+            <input message="tns:test"></input>
+            <output message="tns:testResponse"></output>
+        </operation>
+    </portType>
+    <binding name="pidwsdocPort" type="tns:pidwsdocPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="pid">
+            <soap:operation soapAction="" style="document"/>
+            <input>
+                <soap:body namespace="http://localhost/" use="literal"/>
+            </input>
+            <output>
+                <soap:body namespace="http://localhost/" use="literal"/>
+            </output>
+        </operation>
+        <operation name="getPidForCpr">
+            <soap:operation soapAction="" style="document"/>
+            <input>
+                <soap:body namespace="http://localhost/" use="literal"/>
+            </input>
+            <output>
+                <soap:body namespace="http://localhost/" use="literal"/>
+            </output>
+        </operation>
+        <operation name="findFromCpr">
+            <soap:operation soapAction="" style="document"/>
+            <input>
+                <soap:body namespace="http://localhost/" use="literal"/>
+            </input>
+            <output>
+                <soap:body namespace="http://localhost/" use="literal"/>
+            </output>
+        </operation>
+        <operation name="testConnection">
+            <soap:operation soapAction="" style="document"/>
+            <input>
+                <soap:body namespace="http://localhost/" use="literal"/>
+            </input>
+            <output>
+                <soap:body namespace="http://localhost/" use="literal"/>
+            </output>
+        </operation>
+        <operation name="test">
+            <soap:operation soapAction="" style="document"/>
+            <input>
+                <soap:body namespace="http://localhost/" use="literal"/>
+            </input>
+            <output>
+                <soap:body namespace="http://localhost/" use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="pidwsdoc">
+        <port binding="tns:pidwsdocPort" name="pidwsdocPort">
+            <soap:address location="https://pidws.pp.certifikat.dk/pid_serviceprovider_server/pidws"/>
+        </port>
+    </service>
+</definitions>

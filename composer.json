@@ -1,0 +1,78 @@
+{
+  "name": "rentdesk/laravel-nemid",
+  "description": "Rentdesk NemID Laravel Package allows you to integrate NemID with your laravel application.",
+  "type": "library",
+  "license": "mit",
+  "authors": [
+    {
+      "name": "Andrew Bashtannik",
+      "email": "bashtannik@gmail.com"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/a-bashtannik/x509.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/a-bashtannik/asn1.git"
+    }
+  ],
+  "require": {
+    "sop/asn1": "dev-nemid as 4.1.0",
+    "sop/x509": "dev-php80",
+    "php": "^8.0",
+    "nesbot/carbon": "^2.0",
+    "symfony/process":  "^5.0",
+    "ext-openssl": "*",
+    "ext-dom": "*",
+    "ext-gmp": "*",
+    "ext-intl": "*",
+    "ext-soap": "*"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^6.17",
+    "phpunit/phpunit": "^9.5",
+    "squizlabs/php_codesniffer": "3.*",
+    "vimeo/psalm": "^4.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Rentdesk\\Nemid\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Rentdesk\\Nemid\\Tests\\": "tests"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Rentdesk\\Nemid\\Providers\\NemidServiceProvider"
+      ],
+      "aliases": {
+        "Nemid": "Rentdesk\\Nemid\\Facades\\Nemid"
+      }
+    }
+  },
+  "scripts": {
+    "check-style": "vendor/bin/phpcs -p --standard=PSR12 config/ src/ tests/",
+    "fix-style": "vendor/bin/phpcbf -p --standard=PSR12 config/ src/ tests/",
+    "test": "phpunit",
+    "post-autoload-dump": [
+      "@php ./vendor/bin/testbench package:discover --ansi"
+    ]
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true,
+    "github-oauth": {
+      "github.com": "ad8c50a0d92de9ce477cd1113a2529b1bd860a00"
+    }
+  }
+}

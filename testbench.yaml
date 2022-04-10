@@ -1,0 +1,7 @@
+env:
+  - APP_DEBUG="TRUE"
+  - NEMID_SP_ID="26824905"
+  - NEMID_SP_CERT="../../../../../tests/fixtures/sp-test.cert.pem"
+  - NEMID_SP_KEY="../../../../../tests/fixtures/sp-test.key.pem"
+  - NEMID_PID_CPR_SERVICE_URL="https://pidws.pp.certifikat.dk/pid_serviceprovider_server/pidxml/"
+  - NEMID_RID_CPR_SERVICE_URL="https://ws-erhverv.pp.certifikat.dk/rid_serviceprovider_server/services/HandleSundhedsportalWSPort"

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://localhost/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://localhost/" xmlns:intf="http://localhost/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+
+   <wsdl:message name="getCPRResponse">
+
+      <wsdl:part name="result" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRIDResponse">
+
+      <wsdl:part name="resourceIdentificationNumber" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRIDRequest">
+
+      <wsdl:part name="cVR" type="xsd:string"/>
+
+      <wsdl:part name="ServiceProviderIdentifier" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="matchCPRRequest">
+
+      <wsdl:part name="subjectSerialNumber" type="xsd:string"/>
+
+      <wsdl:part name="cPR" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="matchCPRResponse">
+
+      <wsdl:part name="isMatched" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="testResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="getCPRRequest">
+
+      <wsdl:part name="string" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="testRequest">
+
+   </wsdl:message>
+
+   <wsdl:portType name="HandleSundhedsportalWSPort">
+
+      <wsdl:operation name="getCPR" parameterOrder="string">
+
+         <wsdl:input message="impl:getCPRRequest" name="getCPRRequest"/>
+
+         <wsdl:output message="impl:getCPRResponse" name="getCPRResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="test">
+
+         <wsdl:input message="impl:testRequest" name="testRequest"/>
+
+         <wsdl:output message="impl:testResponse" name="testResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="matchCPR" parameterOrder="subjectSerialNumber cPR">
+
+         <wsdl:input message="impl:matchCPRRequest" name="matchCPRRequest"/>
+
+         <wsdl:output message="impl:matchCPRResponse" name="matchCPRResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRID" parameterOrder="cVR ServiceProviderIdentifier">
+
+         <wsdl:input message="impl:getRIDRequest" name="getRIDRequest"/>
+
+         <wsdl:output message="impl:getRIDResponse" name="getRIDResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="HandleSundhedsportalWSPortSoapBinding" type="impl:HandleSundhedsportalWSPort">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getCPR">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCPRRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCPRResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="test">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="testRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="testResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="matchCPR">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="matchCPRRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="matchCPRResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRID">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getRIDRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getRIDResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="HandleSundhedsportalWS">
+
+      <wsdl:port binding="impl:HandleSundhedsportalWSPortSoapBinding" name="HandleSundhedsportalWSPort">
+
+         <wsdlsoap:address location="https://ws-erhverv.pp.certifikat.dk/rid_serviceprovider_server/services/HandleSundhedsportalWSPort"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

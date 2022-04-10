@@ -1,0 +1,6 @@
+.idea
+.phpunit.result.cache
+/vendor/
+resources/js/vue-nemid/node_modules
+/builds
+/cache
